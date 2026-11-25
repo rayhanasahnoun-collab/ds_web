@@ -1,0 +1,13 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: vehicule-service
+
+# Propriétés métier externalisées
+driveeasy:
+  vehicule:
+    default-currency: EUR
+    seed-data-enabled: true
+    allow-maintenance-status-change: true

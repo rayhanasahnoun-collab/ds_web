@@ -1,0 +1,18 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: location-service
+
+# Propriétés tarifaires et règles métier externalisées
+driveeasy:
+  tarification:
+    remise-standard: 0.00
+    remise-fidele: 0.05
+    remise-vip: 0.10
+    facteur-penalite-retard: 1.50
+    km-forfaitaire-inclus: 200
+    prix-km-supplementaire: 0.25
+  location:
+    seed-data-enabled: true

@@ -1,0 +1,38 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations:
+            - file:../config-repo
+            - file:./config-repo
+            - file:C:/Users/DELL/.gemini/antigravity/scratch/driveeasy/driveeasy-backend/config-repo
+        git:
+          uri: https://github.com/driveeasy-org/driveeasy-config-repo.git
+          clone-on-start: false
+          default-label: main
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always

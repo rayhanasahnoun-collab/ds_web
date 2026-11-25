@@ -1,0 +1,14 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: client-service
+
+# Propriétés métier externalisées
+driveeasy:
+  client:
+    age-minimum: 21
+    seuil-fidele: 5
+    seuil-vip: 15
+    seed-data-enabled: true

@@ -1,0 +1,48 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:4200"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - PATCH
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
+            maxAge: 3600
+      routes:
+        - id: vehicule-service-route
+          uri: lb://vehicule-service
+          predicates:
+            - Path=/api/vehicules/**
+          filters:
+            - StripPrefix=1
+
+        - id: client-service-route
+          uri: lb://client-service
+          predicates:
+            - Path=/api/clients/**
+          filters:
+            - StripPrefix=1
+
+        - id: location-service-route
+          uri: lb://location-service
+          predicates:
+            - Path=/api/locations/**
+          filters:
+            - StripPrefix=1
